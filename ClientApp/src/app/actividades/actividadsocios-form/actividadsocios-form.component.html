@@ -1,0 +1,23 @@
+
+
+<table class="table table-striped" *ngIf= "(ListadoSociosInscriptos && ListadoSociosInscriptos.length) " >
+    <thead class="thead-dark"> <tr>
+        <th>Id</th> 
+        <th>Nombre</th>
+        <th>Fecha Nacimiento</th>
+        <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    <tr class="" *ngFor="let socio of ListadoSociosInscriptos"> 
+        <td>{{ socio.id }}</td>
+        <td>{{ socio.nombre }}</td>
+        <td>{{ socio.fechaNacimiento | date: 'dd/MM/yyyy' }}</td>
+    <td>
+            <button class="btn btn-primary" [routerLink]='["/socios-editar/" + socio.id ] ' >Modificar</button>
+            <button class="btn btn-danger" (click)="eliminarSocio(socio)" >Borrar</button> 
+            <button class="btn btn-warning" [routerLink]='["/socios-actividades/" + socio.id ] '  ><i class="fa fa-search"></i></button> 
+        </td>
+        </tr>
+    </tbody>
+    </table>

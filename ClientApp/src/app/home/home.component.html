@@ -1,0 +1,7 @@
+<h1>MEGASPORT </h1>
+<p>Bienvenidos a nuestro gimnasio, estos son los numeros:</p>
+<ul>
+  <li>Actividades: <a [routerLink]="['/actividades']">{{ ListadoActividades?.length || '0' }}</a> </li>
+  <li>Socios: <a [routerLink]="['/socios']">{{ ListadoSocios?.length || '0' }}</a></li>
+  <li>Inscripciones: <a [routerLink]="['/actividades']">{{ListadoInscripciones?.length || '0'}}</a></li>
+</ul>

@@ -1,0 +1,61 @@
+<h1>Inscripciones a actividades</h1>
+<button [routerLink]='["/socios"]' class="btn btn-primary"> 
+    Volver
+</button>
+
+<div *ngIf="Socio">
+    <div class="form-group"  >
+        <label class="font-weight-bolder">ID:</label> 
+        <label>{{Socio.id}}</label>
+    </div>
+    
+    <div class="form-group">
+        <label class="font-weight-bolder">Nombre:</label>
+        <label>{{Socio.nombre}}</label>
+    </div>
+    <div class="form-group">
+        <label class="font-weight-bolder">Fecha Nacimiento:</label> 
+        <label>{{Socio.fechaNacimiento}}</label>
+    </div>
+</div> 
+
+
+
+<div class="form-inline" >
+        <label class="font-weight-bolder" for="ComboActividades">Inscribir a la actividad</label>
+        
+        <select class="form-control" id="ComboActividades" 
+        [ngModel]="ListadoActividadesCombo" (change)="cambioActividad($event);" 
+        required name="ComboActividades">
+          <option *ngFor="let activ of ListadoActividadesCombo" [value]="activ.id">Actividad: {{ activ.descripcion }} - Precio: {{activ.precio}} </option>
+        </select>
+        
+        
+        <button class="btn btn-primary" (click)='guardarInscripcion()'>Inscribir</button>  
+</div>
+
+
+
+<p *ngIf="! ( ListadoActividadesInscriptas && ListadoActividadesInscriptas.length)" > No existen Categorias
+</p>
+<table class="table table-striped" *ngIf= "(ListadoActividadesInscriptas && ListadoActividadesInscriptas.length) " >
+<thead class="thead-dark"> <tr>
+    <th>Id</th> 
+    <th>Descripcion</th>
+    <th>Precio</th>
+    <th></th>
+    </tr>
+</thead>
+<tbody>
+<tr class="" *ngFor="let activ of ListadoActividadesInscriptas"> 
+    <td>{{ activ.id }}</td>
+    <td>{{ activ.descripcion }}</td>
+    <td>{{ activ.precio }}</td>
+    <td>
+        <button class="btn btn-danger" (click)="borrarInscripcion(activ.id)" ><i class="fa fa-trash"></i></button> 
+    </td>
+</tr>
+</tbody>
+</table>
+
+

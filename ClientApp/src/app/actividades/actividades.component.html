@@ -1,0 +1,29 @@
+<h1>Actividades</h1>
+
+<button [routerLink]='["/actividades-agregar"]' class="btn btn-primary"> 
+    Agregar Actividades
+</button>
+
+<p *ngIf="! ( ListadoActividades && ListadoActividades.length)" > No existen Categorias
+</p>
+<table class="table table-striped" *ngIf= "(ListadoActividades && ListadoActividades.length) " >
+<thead class="thead-dark"> <tr>
+    <th>Id</th> 
+    <th>Descripcion</th>
+    <th>Precio</th>
+    <th></th>
+    </tr>
+</thead>
+<tbody>
+<tr class="" *ngFor="let activ of ListadoActividades"> 
+    <td>{{ activ.id }}</td>
+    <td>{{ activ.descripcion }}</td>
+    <td>{{ activ.precio }}</td>
+<td>
+        <button class="btn btn-primary" [routerLink]='["/actividades-editar/" + activ.id ] ' >Modificar</button>
+        <button class="btn btn-danger" (click)="eliminarActividad(activ)" >Borrar</button> 
+        <button class="btn btn-warning" [routerLink]='["/actividades-socios/" + activ.id ] ' ><i class="fa fa-search"></i></button>
+    </td>
+    </tr>
+</tbody>
+</table>
