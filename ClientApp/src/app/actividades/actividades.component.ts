@@ -18,9 +18,27 @@ export class ActividadesComponent implements OnInit {
     } 
   
   cargarData(){
-      this.ActividadService.getActividades()
-      .subscribe(actividadesDesdeApi => this.ListadoActividades= actividadesDesdeApi,
-      error=> console.error(error)); 
+      //this.ActividadService.getActividades()
+      //.subscribe(actividadesDesdeApi => this.ListadoActividades= actividadesDesdeApi,
+      //error=> console.error(error)); 
+      this.ListadoActividades=[  
+        {  
+
+       id: 12132,  
+       descripcion : 'Esgrima',  
+       precio: 1200.50
+      },  
+      {  
+        id: 32121,  
+        descripcion : 'Ciclismo',  
+        precio: 3500.70
+       },  
+       {  
+        id: 42184,  
+        descripcion : 'Basket',  
+        precio: 2700.50 
+       }  
+      ]; 
     }
     eliminarActividad(activi: IActividad){
       this.ActividadService.borraractividad(activi.id)
